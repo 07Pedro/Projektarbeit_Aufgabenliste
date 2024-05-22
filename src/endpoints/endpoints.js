@@ -39,6 +39,17 @@ app.post('/tasks', (request, response) => {
     }
 })
 
+app.get('/tasks/:id', (request, response) => {
+    const id = request.params.id
+    const task = tasks.find(task => task.id === id)
 
+    if (id != null) {
+        response.setHeader('Content-Type', 'text/json');
+        response.send(task);
+    } else {
+        return response.status(204);
+    }
+
+})
 
 app.listen(3000)
