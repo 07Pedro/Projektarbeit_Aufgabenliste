@@ -18,7 +18,7 @@ app.post('/login', express.json(), (request, response) => {
     response.cookie('sessionId', request.sessionID)
     response.send('Login success')
   } else {
-    response.send('Invalid credentials. Please try again.')
+    response.send(401).send()
   }
 })
 
@@ -27,8 +27,17 @@ app.get('/verify', function (request, response) {
   if (session) {
     response.send('Token verified!')
   } else {
-    response.status(401)
+    response.status(401).send()
   }
+})
+
+app.delete('/logout', function (request, response) {
+  if (request.sessionID) {
+    request.sessionID = null
+    response.status(204).send()
+  }
+
+  response.status(401).send()
 })
 
 app.listen(3000)
