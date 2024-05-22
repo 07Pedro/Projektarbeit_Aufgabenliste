@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "ca71a596-a0ab-4a71-9218-f13e37857d9a",
+		"name": "Aufgabenliste",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34913011"
+	},
+	"item": [
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/tasks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:3000/tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/tasks/501b57a5-abed-429d-9425-de51e585af6b",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/tasks/501b57a5-abed-429d-9425-de51e585af6b"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "http://localhost:3000/tasks/501b57a5-abed-429d-9425-de51e585af6b"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:3000/tasks/501b57a5-abed-429d-9425-de51e585af6b"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"zlimail@email.com\",\r\n    \"password\": \"m295\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/login"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/verify"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:3000/logout"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
