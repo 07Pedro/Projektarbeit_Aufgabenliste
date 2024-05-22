@@ -68,4 +68,18 @@ app.put('/tasks/:id', (request, response) => {
     }
 })
 
+app.delete('/tasks/:id', (request, response) => {
+    const id = request.params.id
+
+    if (id != null) {
+        const task = tasks.find(task => task.id === id);
+        const index = tasks.indexOf(task)
+        tasks.splice(index, 1)
+
+        response.send(tasks)
+    } else {
+        return response.status(404)
+    }
+})
+
 app.listen(3000)
