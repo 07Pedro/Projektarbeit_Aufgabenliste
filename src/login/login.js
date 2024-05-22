@@ -1,5 +1,4 @@
 const session = require('express-session')
-const cookieParser = require('cookie-parser')
 const express = require('express')
 const app = express()
 
@@ -12,15 +11,23 @@ app.use(session({
 
 // login von https://www.geeksforgeeks.org/how-to-manage-sessions-and-cookies-in-express-js/
 
-app.post('/login', express.json(), (req, res) => {
-  const { username, password } = req.body
-  console.log(req.body)
+app.post('/login', express.json(), (request, response) => {
+  const { password } = request.body
+  console.log(request.body)
   if (password === 'm295') {
-    req.session.user = username
-    res.cookie('sessionId', req.sessionID)
-    res.send(req.sessionID)
+    response.cookie('sessionId', request.sessionID)
+    response.send('Login success')
   } else {
-    res.send('Invalid credentials. Please try again.')
+    response.send('Invalid credentials. Please try again.')
+  }
+})
+
+app.get('/verify', function (request, response) {
+  const session = request.sessionID
+  if (session) {
+    response.send('Token verified!')
+  } else {
+    response.status(401)
   }
 })
 
