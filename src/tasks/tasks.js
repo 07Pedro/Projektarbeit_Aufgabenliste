@@ -23,7 +23,7 @@ const oneTask = {
 
 app.get('/tasks', (request, response) => {
   if (tasks != null) {
-    response.setHeader('Content-Type', 'text/json')
+    response.setHeader('Content-Type', 'application/json')
     response.send(tasks)
   } else {
     return response.status(204)
@@ -33,7 +33,7 @@ app.get('/tasks', (request, response) => {
 app.post('/tasks', (request, response) => {
   tasks.push(oneTask)
   if (tasks != null) {
-    response.setHeader('Content-Type', 'text/json')
+    response.setHeader('Content-Type', 'application/json')
     response.send(tasks)
   } else {
     return response.status(204)
@@ -45,7 +45,7 @@ app.get('/tasks/:id', (request, response) => {
   const task = tasks.find(task => task.id === id)
 
   if (id != null) {
-    response.setHeader('Content-Type', 'text/json')
+    response.setHeader('Content-Type', 'application/json')
     response.send(task)
   } else {
     return response.status(404)
@@ -61,6 +61,7 @@ app.put('/tasks/:id', (request, response) => {
     const index = tasks.indexOf(task)
     tasks[index] = oneTask
     tasks[index].doneAt = new Date().toLocaleString('de-CH')
+    response.setHeader('Content-Type', 'application/json')
     response.send(tasks)
   } else {
     return response.status(404)
@@ -74,7 +75,7 @@ app.delete('/tasks/:id', (request, response) => {
     const task = tasks.find(task => task.id === id)
     const index = tasks.indexOf(task)
     tasks.splice(index, 1)
-
+    response.setHeader('Content-Type', 'application/json')
     response.send(tasks)
   } else {
     return response.status(404)
